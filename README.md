@@ -1,0 +1,1 @@
+# del_text_bot
