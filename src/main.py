@@ -28,4 +28,16 @@ async def on_message(message):
 			logging.info(f"メッセージを削除しました: {message.content}")
 			break
 
+@client.event
+async def on_member_update(before, after):
+	for word in words:
+		if after.nick is not None and word in after.nick:
+			try:
+				await after.edit(nick=None)
+				logging.info(f"ニックネームを解除しました: {after}")
+			except discord.Forbidden:
+				logging.info(f"権限不足でニックネームを解除できませんでした: {after}")
+			except discord.HTTPException as e:
+				logging.info(f"エラー: {after}")
+
 client.run(token)
