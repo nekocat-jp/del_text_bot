@@ -38,6 +38,6 @@ async def on_member_update(before, after):
 			except discord.Forbidden:
 				logging.info(f"権限不足でニックネームを解除できませんでした: {after}")
 			except discord.HTTPException as e:
-				logging.info(f"エラー: {after}")
+				logging.info(f"エラー: {e}")
 
 client.run(token)
